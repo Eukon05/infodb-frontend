@@ -1,0 +1,31 @@
+.navbar{
+    background-color: #313947;
+}
+
+.navbar-brand{
+    padding: 1%;
+}
+
+.search{
+    padding: 1%; margin: auto; width: 40%
+}
+
+.article{
+    padding: 3%;
+    border-radius: 2%;
+    background-color: #3a5178;
+}
+
+.article:hover{
+    background-color: #5571a1;
+    color: white;
+    cursor: pointer;
+}
+
+img{
+    width: 100%;
+}
+
+h5{
+    padding: 1%;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <title>infodb</title>
+</head>
+<body onload="loadArticles()">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h4 class="title">infodb</h3>
+        </div>
+        <div class="navbar-item search">
+            <input class="input is-primary " type="text" placeholder="Co chcesz dziś wyszukać?"/>
+        </div>
+    </nav>
+
+    <div id="articles" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 15px; padding: 2%;"></div>
+</body>
+</html>
