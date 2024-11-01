@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/7220ecca37.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
     <title>infodb</title>
 </head>
@@ -13,11 +14,25 @@
         <div class="navbar-brand">
             <h4 class="title">infodb</h3>
         </div>
-        <div class="navbar-item search">
-            <input class="input is-primary " type="text" placeholder="Co chcesz dziś wyszukać?"/>
+
+        <div class="search">
+            <p class="control has-icons-right">
+                <input class="input is-primary" type="text" placeholder="Co chcesz dziś wyszukać?"/>
+                <span class="icon is-small is-right">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+            </p>
         </div>
     </nav>
 
     <div id="articles" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 15px; padding: 2%;"></div>
 </body>
+<footer style="text-align: center;">
+    <p>Made with ❤️ by eukon05</p>
+    <p>All assets presented on the website belong to their rightful owners</p>
+
+    <a class = "github" href="https://github.com/eukon05" target="_blank">
+        <i class="fa-brands fa-github"></i>
+    </a>
+</footer>
 </html>

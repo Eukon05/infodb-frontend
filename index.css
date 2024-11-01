@@ -29,3 +29,26 @@ img{
 h5{
     padding: 1%;
 }
+
+.github:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+.github:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+.github:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+}
+  .github:active {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+}
