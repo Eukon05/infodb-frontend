@@ -6,8 +6,12 @@
     padding: 1%;
 }
 
+.navbar-brand:hover{
+    cursor: pointer;
+}
+
 .search{
-    padding: 1%; margin: auto; width: 40%
+    padding: 1%; margin: 0 auto; width: 40%
 }
 
 .article{
@@ -47,7 +51,8 @@ h5{
     background-color: transparent;
     text-decoration: underline;
 }
-  .github:active {
+
+.github:active {
     color: white;
     background-color: transparent;
     text-decoration: underline;

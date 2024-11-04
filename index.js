@@ -1,9 +1,9 @@
 const params = new URLSearchParams(window.location.search);
+var page = params.has("page") ? parseInt(params.get("page")) : 0;
+page = page < 0 ? 0 : page;
 
 function loadArticles(){
     let a = document.getElementById("articles");
-
-    let page = params.has("page") ? params.get("page") : 0;
 
     fetch("http://localhost:8080/api/v1/articles/latest?page=" + page)
     .then(response => response.json())
@@ -30,4 +30,26 @@ function loadArticles(){
 
 function openUrl(url){
     location.href = url;
+}
+
+function placeButtons(){
+    let btnDiv = document.getElementById("buttons");
+
+    let btnPrev = document.createElement("button");
+    btnPrev.className="button";
+    btnPrev.textContent = "<";
+    btnPrev.onclick = openUrl.bind(this, "index.html?page=" + (page - 1));
+
+    btnDiv.appendChild(btnPrev);
+
+    let btnNext = document.createElement("button");
+    btnNext.className="button";
+    btnNext.textContent = ">";
+    btnNext.onclick = openUrl.bind(this, "index.html?page=" + (page + 1));
+
+    btnDiv.appendChild(btnNext);
+
+    if(page <= 0){
+        btnPrev.disabled = true;
+    }
 }

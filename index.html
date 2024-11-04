@@ -9,9 +9,9 @@
     <script src="index.js"></script>
     <title>infodb</title>
 </head>
-<body onload="loadArticles()">
+<body onload="loadArticles(), placeButtons()">
     <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+        <div class="navbar-brand" onclick="openUrl('index.html')">
             <h4 class="title">infodb</h3>
         </div>
 
@@ -26,6 +26,7 @@
     </nav>
 
     <div id="articles" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 15px; padding: 2%;"></div>
+    <div id="buttons" style="margin: 0 auto; width: fit-content; display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 15px; padding: 2%;"></div>
 </body>
 <footer style="text-align: center;">
     <p>Made with ❤️ by eukon05</p>
