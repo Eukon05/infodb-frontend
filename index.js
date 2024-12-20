@@ -5,7 +5,7 @@ page = page < 0 ? 0 : page;
 function loadArticles(){
     let a = document.getElementById("articles");
 
-    fetch("http://localhost:8080/api/v1/articles/latest?page=" + page)
+    fetch("https://infodb.eukon05.ovh/api/v1/articles/latest?page=" + page)
     .then(response => response.json())
     .then(data => {;
         console.log(data);

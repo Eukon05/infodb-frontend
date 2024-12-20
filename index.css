@@ -18,12 +18,14 @@
     padding: 3%;
     border-radius: 2%;
     background-color: #3a5178;
+    transition: transform 250ms
 }
 
 .article:hover{
     background-color: #5571a1;
     color: white;
     cursor: pointer;
+    transform: translateY(-10px);
 }
 
 img{
