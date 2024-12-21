@@ -14,6 +14,25 @@
     padding: 1%;
 }
 
+#articles{
+    display: grid; 
+    grid-gap: 15px; 
+    padding: 2%;
+    grid-template-columns: repeat(5, 1fr); 
+}
+
+@media screen and (max-width: 992px){
+    #articles{
+        grid-template-columns: repeat(3, 1fr); 
+    }   
+}
+
+@media screen and (max-width: 600px){
+    #articles{
+        grid-template-columns: repeat(1, 1fr); 
+    }   
+}
+
 .article{
     padding: 3%;
     border-radius: 2%;
@@ -34,6 +53,12 @@ img{
 
 h5{
     padding: 1%;
+}
+
+#buttons{
+    margin: 0 auto; 
+    width: fit-content; 
+    padding: 2%
 }
 
 .github:link {
