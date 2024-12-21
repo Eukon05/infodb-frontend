@@ -25,7 +25,7 @@ function setup(){
     };
 
     search.addEventListener("keyup", function (event) {
-        if (event.code == "Enter") {
+        if (event.key == "Enter") {
             if(search.value == "")
                 openUrl(homeUrl);
             else
