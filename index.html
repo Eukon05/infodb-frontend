@@ -9,24 +9,38 @@
     <script src="index.js"></script>
     <title>infodb</title>
 </head>
-<body onload="loadArticles(), placeButtons()">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand" onclick="openUrl('index.html')">
+<body onload="setup(), loadArticles()">
+    <nav class="navbar is-flex" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand" onclick="openUrl('/')">
             <h4 class="title">infodb</h3>
         </div>
 
-        <div class="search">
+        <div class="search is-flex-grow-1">
             <p class="control has-icons-right">
-                <input class="input is-primary" type="text" placeholder="Co chcesz dziś wyszukać?"/>
+                <input class="input is-primary" id="search" type="text" placeholder="Co chcesz dziś wyszukać?"/>
                 <span class="icon is-small is-right">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
             </p>
         </div>
+
+        <div class="navbar-end">
+            <a class="navbar-item" href='https://infodb.eukon05.ovh/api/v1/swagger-ui.html' target="_blank">
+                View our API
+                <i class="fa-solid fa-square-binary"></i>
+            </a>
+        </div>
     </nav>
 
     <div id="articles" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 15px; padding: 2%;"></div>
-    <div id="buttons" style="margin: 0 auto; width: fit-content; display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 15px; padding: 2%;"></div>
+    <div id="buttons" style="margin: 0 auto; width: fit-content; display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 15px; padding: 2%;">
+        <button class="button" id="btnPrev">
+            <
+        </button>
+        <button class="button" id="btnNext">
+            >
+        </button>
+    </div>
 </body>
 <footer style="text-align: center;">
     <p>Made with ❤️ by eukon05</p>
