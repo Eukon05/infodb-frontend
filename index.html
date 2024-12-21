@@ -11,7 +11,7 @@
 </head>
 <body onload="setup(), loadArticles()">
     <nav class="navbar is-flex" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand" onclick="openUrl('/')">
+        <div class="navbar-brand" onclick="openUrl(window.location.origin + window.location.pathname)">
             <h4 class="title">infodb</h3>
         </div>
 
@@ -33,7 +33,7 @@
     </nav>
 
     <div id="articles" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 15px; padding: 2%;"></div>
-    <div id="buttons" style="margin: 0 auto; width: fit-content; display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 15px; padding: 2%;">
+    <div id="buttons is-flex" style="margin: 0 auto; width: fit-content; padding: 2%;">
         <button class="button" id="btnPrev">
             <
         </button>

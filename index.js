@@ -6,6 +6,7 @@ let btnPrev;
 let btnNext;
 let search;
 let a;
+const homeUrl = window.location.origin + window.location.pathname;
 
 function setup(){
     a = document.getElementById("articles");
@@ -26,9 +27,9 @@ function setup(){
     search.addEventListener("keyup", function (event) {
         if (event.code == "Enter") {
             if(search.value == "")
-                openUrl("/");
+                openUrl(homeUrl);
             else
-                openUrl("/?title=" + search.value);
+                openUrl(homeUrl + "?title=" + search.value);
         }
     });
 
