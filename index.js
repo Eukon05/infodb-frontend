@@ -6,13 +6,23 @@ let btnPrev;
 let btnNext;
 let search;
 let a;
+let originAll;
 const homeUrl = window.location.origin + window.location.pathname;
+
+let reqBody = {
+    title: params.has("title") ? params.get("title") : null,
+    origin: params.has("origin") ? params.get("origin") : null,
+    dateFrom: params.has("dateFrom") ? params.get("dateFrom") : null,
+    dateTo: params.has("dateTo") ? params.get("dateTo") : null,
+    tags: params.has("tags") ? params.get("tags").split(",") : null
+};
 
 function setup(){
     a = document.getElementById("articles");
     btnPrev = document.getElementById("btnPrev");
     btnNext = document.getElementById("btnNext");
     search = document.getElementById("search");
+    originAll = document.getElementById("originAll");
 
     btnPrev.onclick = function(){
         page--;
@@ -27,14 +37,61 @@ function setup(){
     search.addEventListener("keyup", function (event) {
         if (event.key == "Enter") {
             if(search.value == "")
-                openUrl(homeUrl);
+                reqBody.title = null;
             else
-                openUrl(homeUrl + "?title=" + search.value);
+                reqBody.title = search.value;
+
+            page = 0;
+            loadArticles();
         }
     });
 
-    if(params.has("title"))
+    originAll.onclick = function(){
+        if(originAll.checked){
+            reqBody.origin = null;
+            page = 0;
+            loadArticles();
+        }
+    }
+
+    if(reqBody.title != null)
         search.value = params.get("title");
+}
+
+function loadOrigins(){
+    originAll.checked = true;
+
+    fetch("https://infodb.eukon05.ovh/api/v1/sources")
+    .then(response => response.json())
+    .then(data => {
+        let origins = document.getElementById("origins");
+        for (var index in data) {
+            let origin = document.createElement("input");
+            let label = document.createElement("label");
+
+            origin.type = "radio";
+            origin.name = "origin";
+            origin.id = "origin" + data[index].name
+            origin.value = data[index].name;
+
+            label.className = "originLabel";
+            label.textContent = data[index].name;
+
+            origin.onclick = function(){
+                if(origin.checked){
+                    reqBody.origin = origin.value;
+                    page = 0;
+                    loadArticles();
+                }
+            }
+
+            if(reqBody.origin == data[index].name)
+                origin.checked = true;
+            
+            origins.appendChild(origin);
+            origins.appendChild(label);
+        }
+    });
 }
 
 function loadArticles(){
@@ -47,20 +104,12 @@ function loadArticles(){
 
     btnNext.disabled = false;
 
-    let body = {
-        title: params.has("title") ? params.get("title") : null,
-        origin: params.has("origin") ? params.get("origin") : null,
-        dateFrom: params.has("dateFrom") ? params.get("dateFrom") : null,
-        dateTo: params.has("dateTo") ? params.get("dateTo") : null,
-        tags: params.has("tags") ? params.get("tags").split(",") : null
-    };
-
     fetch("https://infodb.eukon05.ovh/api/v1/articles?page=" + page, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(reqBody)
     })
     .then(response => response.json())
     .then(data => {

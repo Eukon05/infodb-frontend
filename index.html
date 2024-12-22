@@ -9,7 +9,7 @@
     <script src="index.js"></script>
     <title>infodb</title>
 </head>
-<body onload="setup(), loadArticles()">
+<body onload="setup(), loadOrigins(), loadArticles()">
     <nav class="navbar is-flex" role="navigation" aria-label="main navigation">
         <div class="navbar-brand" onclick="openUrl(window.location.origin + window.location.pathname)">
             <h4 class="title">infodb</h3>
@@ -26,14 +26,19 @@
 
         <div class="navbar-end">
             <a class="navbar-item" href='https://infodb.eukon05.ovh/api/v1/swagger-ui.html' target="_blank">
-                View our API
+                API
                 <i class="fa-solid fa-square-binary"></i>
             </a>
         </div>
     </nav>
 
-    <div id="articles"></div>
-    <div id="buttons" class="is-flex">
+    <div id="origins" class="is-flex is-justify-content-center">
+        <input type="radio" id="originAll" name="origin">
+        <label class="originLabel">Wszystkie</label>
+    </div>
+
+    <div id="articles" class="articles"></div>
+    <div class="buttons is-flex is-justify-content-center">
         <button class="button" id="btnPrev">
             <
         </button>

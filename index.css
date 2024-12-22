@@ -2,19 +2,20 @@
     background-color: #313947;
 }
 
-.navbar-brand{
+.navbar-brand, .search, .originLabel, h5{
     padding: 1%;
 }
 
-.navbar-brand:hover{
+.originLabel{
+    padding-left: 0.5%;
+    color: white;
+}
+
+.navbar-brand:hover, .article:hover, .github:hover{
     cursor: pointer;
 }
 
-.search{
-    padding: 1%;
-}
-
-#articles{
+.articles{
     display: grid; 
     grid-gap: 15px; 
     padding: 2%;
@@ -22,13 +23,13 @@
 }
 
 @media screen and (max-width: 992px){
-    #articles{
+    .articles{
         grid-template-columns: repeat(3, 1fr); 
     }   
 }
 
 @media screen and (max-width: 600px){
-    #articles{
+    .articles{
         grid-template-columns: repeat(1, 1fr); 
     }   
 }
@@ -43,44 +44,19 @@
 .article:hover{
     background-color: #5571a1;
     color: white;
-    cursor: pointer;
     transform: translateY(-10px);
+}
+
+#origins{
+    background-color: #3a4355
 }
 
 img{
     width: 100%;
 }
 
-h5{
-    padding: 1%;
-}
-
-#buttons{
-    margin: 0 auto; 
-    width: fit-content; 
-    padding: 2%
-}
-
-.github:link {
+.github, .github:link, .github:visited, .github:hover, .github:active {
     color: white;
     background-color: transparent;
     text-decoration: none;
-}
-  
-.github:visited {
-    color: white;
-    background-color: transparent;
-    text-decoration: none;
-}
-  
-.github:hover {
-    color: white;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-.github:active {
-    color: white;
-    background-color: transparent;
-    text-decoration: underline;
 }
