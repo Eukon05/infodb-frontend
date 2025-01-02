@@ -7,22 +7,31 @@ let btnNext;
 let search;
 let a;
 let originAll;
+let dateFrom;
+let dateTo;
 const homeUrl = window.location.origin + window.location.pathname;
 
 let reqBody = {
     title: params.has("title") ? params.get("title") : null,
-    origin: params.has("origin") ? params.get("origin") : null,
+    origins: params.has("origins") ? params.get("origins") : null,
     dateFrom: params.has("dateFrom") ? params.get("dateFrom") : null,
     dateTo: params.has("dateTo") ? params.get("dateTo") : null,
     tags: params.has("tags") ? params.get("tags").split(",") : null
 };
 
 function setup(){
+    let now = new Date().toISOString().slice(0,16);
+
     a = document.getElementById("articles");
     btnPrev = document.getElementById("btnPrev");
     btnNext = document.getElementById("btnNext");
     search = document.getElementById("search");
     originAll = document.getElementById("originAll");
+    //dateFrom = document.getElementById("dateFrom");
+    //dateTo = document.getElementById("dateTo");
+
+    //dateFrom.max = now;
+    //dateTo.max = now;
 
     btnPrev.onclick = function(){
         page--;
@@ -48,7 +57,7 @@ function setup(){
 
     originAll.onclick = function(){
         if(originAll.checked){
-            reqBody.origin = null;
+            reqBody.origins = null;
             page = 0;
             loadArticles();
         }
@@ -79,7 +88,7 @@ function loadOrigins(){
 
             origin.onclick = function(){
                 if(origin.checked){
-                    reqBody.origin = origin.value;
+                    reqBody.origins = [origin.value];
                     page = 0;
                     loadArticles();
                 }
