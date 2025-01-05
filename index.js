@@ -14,7 +14,7 @@ const homeUrl = window.location.origin + window.location.pathname;
 
 let reqBody = {
     title: params.has("title") ? params.get("title") : null,
-    origins: params.has("origins") ? params.get("origins") : null,
+    origins: params.has("origins") ? params.get("origins").replace('[', '').replace(']', '').split(", ") : null,
     dateFrom: params.has("dateFrom") ? params.get("dateFrom") : null,
     dateTo: params.has("dateTo") ? params.get("dateTo") : null,
     tags: params.has("tags") ? params.get("tags").split(",") : null
