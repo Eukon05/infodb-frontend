@@ -163,3 +163,8 @@ function loadArticles(){
 function openUrl(url){
     location.href = url;
 }
+
+function applyFilters(){
+    page = 0;
+    loadArticles();
+}
