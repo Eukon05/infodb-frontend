@@ -9,6 +9,7 @@ let a;
 let originAll;
 let dateFrom;
 let dateTo;
+let submit;
 const homeUrl = window.location.origin + window.location.pathname;
 
 let reqBody = {
@@ -20,18 +21,12 @@ let reqBody = {
 };
 
 function setup(){
-    let now = new Date().toISOString().slice(0,16);
-
     a = document.getElementById("articles");
     btnPrev = document.getElementById("btnPrev");
     btnNext = document.getElementById("btnNext");
     search = document.getElementById("search");
     originAll = document.getElementById("originAll");
-    //dateFrom = document.getElementById("dateFrom");
-    //dateTo = document.getElementById("dateTo");
-
-    //dateFrom.max = now;
-    //dateTo.max = now;
+    submit = document.getElementById("submit");
 
     btnPrev.onclick = function(){
         page--;
@@ -56,11 +51,23 @@ function setup(){
     });
 
     originAll.onclick = function(){
+        let checkboxes = document.getElementsByName("origin");
         if(originAll.checked){
             reqBody.origins = null;
-            page = 0;
-            loadArticles();
+            checkboxes.forEach(t => {
+                t.disabled = true;
+                t.checked = false;
+            })
         }
+        else {
+            reqBody.origins = [];
+            checkboxes.forEach(t => {
+                t.disabled = false;
+                t.checked = true;
+                reqBody.origins.push(t.value);
+            })
+        }
+        submit.disabled = false;
     }
 
     if(reqBody.title != null)
@@ -74,37 +81,44 @@ function loadOrigins(){
     .then(response => response.json())
     .then(data => {
         let origins = document.getElementById("origins");
+        reqBody.origins = [];
+
         for (var index in data) {
             let origin = document.createElement("input");
             let label = document.createElement("label");
 
-            origin.type = "radio";
+            origin.type = "checkbox";
             origin.name = "origin";
-            origin.id = "origin" + data[index].name
             origin.value = data[index].name;
+            origin.disabled = true;
 
             label.className = "originLabel";
-            label.textContent = data[index].name;
+            label.textContent = origin.value;
 
             origin.onclick = function(){
                 if(origin.checked){
-                    reqBody.origins = [origin.value];
-                    page = 0;
-                    loadArticles();
+                    reqBody.origins.push(origin.value);
                 }
+                else{
+                    reqBody.origins.splice(reqBody.origins.indexOf(origin.value), 1)
+                }
+                submit.disabled = false;
             }
 
-            if(reqBody.origin == data[index].name)
+            if(reqBody.origins.includes(origin.value))
                 origin.checked = true;
             
             origins.appendChild(origin);
             origins.appendChild(label);
+
+            reqBody.origins.push(origin.value);
         }
     });
 }
 
 function loadArticles(){
     a.innerHTML = "";
+    submit.disabled = true;
 
     if(page == 0)
         btnPrev.disabled = true;
