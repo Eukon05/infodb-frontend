@@ -2,13 +2,16 @@
     background-color: #313947;
 }
 
+.title, .api-button, .originLabel{
+    color: white;
+}
+
 .navbar-brand, .search, .originLabel, h5{
     padding: 1%;
 }
 
 .originLabel{
     padding-left: 0.5%;
-    color: white;
 }
 
 .navbar-brand:hover, .article:hover, .github:hover{
@@ -35,6 +38,7 @@
 }
 
 .article{
+    color: rgba(255, 255, 255, 0.725);
     padding: 3%;
     border-radius: 2%;
     background-color: #3a5178;
