@@ -161,7 +161,7 @@ function loadArticles(){
 }
 
 function openUrl(url){
-    location.href = url;
+    window.open(url, '_blank').focus();
 }
 
 function applyFilters(){
