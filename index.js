@@ -145,9 +145,20 @@ function loadArticles(){
             let article = document.createElement("div");
             article.className = "article";
 
+            let imgContainer = document.createElement("div");
+            imgContainer.className = "imageContainer";
+
+            let originLabel = document.createElement("div");
+            originLabel.textContent = data[index].origin;
+            originLabel.className = "imageText";
+
             let img = document.createElement("img");
             img.setAttribute("src", data[index].imageUrl);
-            article.appendChild(img);
+
+            imgContainer.appendChild(img);
+            imgContainer.appendChild(originLabel);
+
+            article.appendChild(imgContainer);
 
             let title = document.createElement("h5");
             title.textContent = data[index].title;

@@ -59,6 +59,22 @@ img{
     width: 100%;
 }
 
+.imageContainer{
+    position: relative;
+    text-align: center;
+}
+
+.imageText{
+    background-color: #cd3333;
+    border-radius: 5%;
+    min-width: 60px;
+    font-size: 10px;
+    color: white;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
 .github, .github:link, .github:visited, .github:hover, .github:active {
     color: white;
     background-color: transparent;
